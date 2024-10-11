@@ -1,3 +1,5 @@
+
+
 """
 Django settings for Hms project.
 
@@ -78,7 +80,11 @@ WSGI_APPLICATION = 'Hms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'hospitalmanagement',
+        'USER': 'root',
+        'PASSWORD': 'harish123',
+        'HOST': 'localhost',  # Change this if your MySQL server is hosted elsewhere
+        'PORT': '3306',       # Default MySQL port
     }
 }
 
