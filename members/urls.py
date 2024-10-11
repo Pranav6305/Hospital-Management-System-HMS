@@ -10,4 +10,6 @@ urlpatterns = [
     path('doctor-home/', views.doctor_home, name='doctor_home'),
     path('patient-home/', views.patient_home, name='patient_home'),
     path('patient-registered/', views.patient_registered, name='patient_registered'),
+    path('book-appointment/', views.book_appointment, name='book_appointment'),
+    path('medical-record/', views.view_medical_record, name='view_medical_record'),
 ]
