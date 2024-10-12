@@ -33,13 +33,8 @@
         <form method="post" action="{% url 'book_appointment' %}">
             {% csrf_token %}
             <div class="mb-3">
-                <label for="doctor" class="form-label">Select Doctor</label>
-                <select class="form-select" id="doctor" name="doctor" required>
-                    <option value="">Choose a doctor</option>
-                    <option value="1">Dr. Smith - Cardiologist</option>
-                    <option value="2">Dr. Johnson - Neurologist</option>
-                    <option value="3">Dr. Williams - Pediatrician</option>
-                </select>
+                <label for="patient_id" class="form-label">Enter Patient ID</label>
+                <input type="number" class="form-control" id="patient_id" name="patient_id" required>
             </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Appointment Date</label>

@@ -1,5 +1,10 @@
 # members/views.py
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Appointment
+from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
+import logging
 
 def home(request):
     return render(request, 'index.html')
@@ -31,9 +36,37 @@ def patient_home(request):
 def patient_registered(request):
     return render(request, 'patient-registered.html')
 
+logger = logging.getLogger(__name__)
+
+@csrf_exempt
 def book_appointment(request):
     if request.method == 'POST':
-        return redirect('patient_home')
+        logger.info("Received POST request for booking appointment")
+        patient_id = request.POST.get('patient_id')
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        reason = request.POST.get('reason')
+
+        logger.info(f"Received data: patient_id={patient_id}, date={date}, time={time}, reason={reason}")
+
+        try:
+            # Create and save the appointment
+            appointment = Appointment(
+                patient_id=patient_id,
+                issue=reason,
+                date=date,
+                time=time,
+                created_at=timezone.now()
+            )
+            appointment.save()
+            logger.info(f"Appointment saved successfully: {appointment}")
+            messages.success(request, 'Appointment booked successfully!')
+        except Exception as e:
+            logger.error(f"Error saving appointment: {str(e)}")
+            messages.error(request, 'Error booking appointment. Please try again.')
+
+        return redirect('patient_home')  # Redirect to patient home page after booking
+
     return render(request, 'book-appointment.html')
 
 def view_medical_record(request):
