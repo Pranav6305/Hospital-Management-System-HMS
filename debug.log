@@ -19,3 +19,66 @@ Watching for file changes with StatReloader
 Received POST request for booking appointment
 Received data: patient_id=123456, date=2024-10-14, time=16:11, reason=loose motion
 Appointment saved successfully: Appointment for Patient 123456 on 2024-10-14 at 16:11
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-14, time=17:20, reason=Fever
+Appointment saved successfully: Appointment for Patient 123456 on 2024-10-14 at 17:20
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\views.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-13, time=17:28, reason=fever
+Error saving appointment: name 'BookAppointment' is not defined
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\views.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-13, time=17:29, reason=fever
+Error saving appointment: table bookappointments has no column named created_at
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\views.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patientid=123456, date=2024-10-16, time=17:33, issue=fever
+Error saving appointment: table bookappointments has no column named patientid
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\views.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patientid=123456, date=2024-10-18, time=17:37, issue=fever
+Error saving appointment: table bookappointments has no column named patientid
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Received POST request for booking appointment
+Received data: patientid=123456, date=2024-10-25, time=10:13, issue=fever
+Error saving appointment: table bookappointments has no column named patientid
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\views.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-31, time=10:17, issue=Headache
+Error saving appointment: no such column: issue
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\views.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-22, time=10:22, issue=fever
+Error saving appointment: no such column: issue
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\members\models.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-19, time=10:25, reason=fever
+Error saving appointment: no such column: issue
+C:\Users\chitr\Desktop\hms\Hospital-Management-System-HMS\Hms\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-31, time=10:28, reason=Regular checkup
+Error saving appointment: no such column: issue
+Watching for file changes with StatReloader
+Received POST request for booking appointment
+Received data: patient_id=123456, date=2024-10-14, time=10:34, reason=Checkup
+Appointment saved successfully: Appointment for Patient 123456 on 2024-10-14 at 10:34

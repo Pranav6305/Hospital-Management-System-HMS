@@ -21,13 +21,16 @@ class Appointment(models.Model):
     class Meta:
         db_table = 'book_appointments'
         
-from django.db import models
+
 
 class BookAppointment(models.Model):
-    patient_id = models.CharField(max_length=50)  # Adjust the field types as needed
-    date = models.DateField()
-    time = models.TimeField()
-    reason = models.TextField()
+    patientid = models.IntegerField(null=True, blank=True, db_column='patientid')  # Allow null values
+    issue = models.CharField(max_length=255, null=True, blank=True, db_column='issue')  # Allow null values
+    date = models.CharField(max_length=255, db_column='date')
+    time = models.CharField(max_length=255, db_column='time')
 
     class Meta:
-        db_table = 'bookappointments'  # This specifies the table name in MySQL
+        db_table = 'bookappointments'
+
+    def __str__(self):
+        return f"Appointment for Patient {self.patientid} on {self.date} at {self.time}"

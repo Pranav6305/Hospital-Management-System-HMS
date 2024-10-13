@@ -1,7 +1,7 @@
 # members/views.py
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Appointment
+from .models import Appointment, BookAppointment
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 import logging
@@ -45,18 +45,17 @@ def book_appointment(request):
         patient_id = request.POST.get('patient_id')
         date = request.POST.get('date')
         time = request.POST.get('time')
-        reason = request.POST.get('reason')
+        reason = request.POST.get('reason')  # Get 'reason' from the form
 
         logger.info(f"Received data: patient_id={patient_id}, date={date}, time={time}, reason={reason}")
 
         try:
-            # Create and save the appointment
-            appointment = Appointment(
-                patient_id=patient_id,
-                issue=reason,
+            # Create and save the appointment using the BookAppointment model
+            appointment = BookAppointment(
+                patientid=int(patient_id),  # Convert to integer
                 date=date,
                 time=time,
-                created_at=timezone.now()
+                issue=reason  # Map 'reason' from the form to 'issue' in the model
             )
             appointment.save()
             logger.info(f"Appointment saved successfully: {appointment}")
@@ -66,7 +65,7 @@ def book_appointment(request):
             messages.error(request, 'Error booking appointment. Please try again.')
 
         return redirect('patient_home')  # Redirect to patient home page after booking
-
+    
     return render(request, 'book-appointment.html')
 
 def view_medical_record(request):

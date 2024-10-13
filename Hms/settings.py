@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'hospitalmanagement',
         'USER': 'root',
-        'PASSWORD': '1234',
+        'PASSWORD': 'harish123',
         'HOST': 'localhost',  # Change this if your MySQL server is hosted elsewhere
         'PORT': '3306',       # Default MySQL port
     }
