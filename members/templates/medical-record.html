@@ -29,39 +29,33 @@
     </nav>
 
     <div class="container mt-5">
-        <h1 class="mb-4">Medical Records</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="patientID" class="form-label">Enter Patient ID</label>
-                <input type="text" class="form-control" id="patientID" name="patient_id" required>
-            </div>
-            <button type="submit" class="btn btn-primary">View Records</button>
-        </form>
-
-        <!-- If records exist, display them in a table -->
-        {% if records %}
-        <h2 class="mt-5">Medical Records for Patient ID: {{ patient_id }}</h2>
-        <table class="table table-bordered mt-3">
+        <h1 class="mb-4">Appointments</h1>
+        <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Issue</th>
-                    <th scope="col">Date and Time</th>
+                    <th>Patient ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Issue</th>
                 </tr>
             </thead>
             <tbody>
-                {% for record in records %}
+                {% for appointment in appointments %}
                 <tr>
-                    <td>{{ record.0 }}</td>  <!-- Fetch first column: issue -->
-                    <td>{{ record.1 }}</td>  <!-- Fetch second column: time -->
+                    <td>{{ appointment.patientid }}</td>  <!-- Use patientid here -->
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.issue }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No appointments found.</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        {% else %}
-        <p class="mt-5">No records found for this patient.</p>
-        {% endif %}
     </div>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
