@@ -71,5 +71,9 @@ def book_appointment(request):
     return render(request, 'book-appointment.html')
 
 def view_medical_record(request):
-    appointments = Appointment.objects.all()  # Get all appointments from BookAppointment
-    return render(request, 'medical-record.html', {'appointments': appointments})
+    appointments = BookAppointment.objects.all().values(
+        'patientid', 'issue', 'date', 'time'
+    )  # Do not include 'id'
+    
+    context = {'appointments': appointments}
+    return render(request, 'medical_record.html', context)

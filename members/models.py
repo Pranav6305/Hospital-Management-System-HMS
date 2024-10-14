@@ -9,17 +9,17 @@ class Patient(models.Model):
 
 
 class Appointment(models.Model):
-    patient_id = models.IntegerField(default=0)
-    issue = models.CharField(max_length=255)
+    patientid = models.ForeignKey('Patient', on_delete=models.CASCADE)  # Adjust if necessary
+    issue = models.CharField(max_length=100)
     date = models.DateField()
     time = models.TimeField()
-    created_at = models.DateTimeField(default=timezone.now)
 
-    def __str__(self):
-        return f"Appointment for Patient {self.patient_id} on {self.date} at {self.time}"
+    # def __str__(self):
+        # return f"Appointment for Patient {self.patient_id} on {self.date} at {self.time}"
     
     class Meta:
         db_table = 'book_appointments'
+        managed = False  # Django won't try to manage this table's schema
         
 
 
