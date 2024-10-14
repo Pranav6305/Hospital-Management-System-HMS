@@ -34,3 +34,21 @@ class BookAppointment(models.Model):
 
     def __str__(self):
         return f"Appointment for Patient {self.patientid} on {self.date} at {self.time}"
+
+class NewPatient(models.Model):
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    dob = models.DateField()
+    contactno = models.CharField(max_length=10)
+    patientid = models.CharField(max_length=50, unique=True)
+    password = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'newpatient'  
+
+    def __str__(self):
+        return self.firstname + " " + self.lastname
+
+    
+    
+

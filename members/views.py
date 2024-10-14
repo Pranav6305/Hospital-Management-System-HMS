@@ -2,7 +2,7 @@
 from multiprocessing import connection
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Appointment, BookAppointment
+from .models import Appointment, BookAppointment, NewPatient
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from members.models import Appointment 
@@ -23,11 +23,46 @@ def patient_login(request):
         return redirect('patient_home')
     return render(request, 'patient-login.html')
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.db import IntegrityError
+from .models import NewPatient  # Make sure the model is correctly imported
+
 def register_patient(request):
     if request.method == 'POST':
-        # Add registration logic here
-        return redirect('patient_registered')
-    return render(request, 'register-patient.html')
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        dob = request.POST['dob']
+        contactno = request.POST['contactno']
+        patientid = request.POST['patientid']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        # Validate password match
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match.")
+            return redirect('register_patient')
+
+        try:
+            # Save patient data
+            patient = NewPatient(
+                firstname=firstname,
+                lastname=lastname,
+                dob=dob,
+                contactno=contactno,
+                patientid=patientid,
+                password=password  # Ideally, hash the password before storing
+            )
+            patient.save()
+            messages.success(request, "Patient registered successfully!")
+            return redirect('home')  # Redirect to the home page or appropriate route
+
+        except IntegrityError:
+            messages.error(request, "Patient ID already exists. Please try a different one.")
+            return redirect('register_patient')
+
+    return render(request, 'register_patient.html')
+
 
 def doctor_home(request):
     return render(request, 'doctor-home.html')
@@ -77,3 +112,4 @@ def view_medical_record(request):
     
     context = {'appointments': appointments}
     return render(request, 'medical_record.html', context)
+
