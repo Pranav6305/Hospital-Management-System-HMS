@@ -1,57 +1,122 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Appointment - Hospital Management System</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-</head>
-<body>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+      }
+
+      .container {
+        flex: 1; /* This makes the container grow to fill the available space */
+      }
+
+      footer {
+        text-align: center; /* Center the text in the footer */
+        background-color: #f8f9fa; /* Light background color for the footer */
+        padding: 20px; /* Space around the footer text */
+        border-top: 1px solid #ddd; /* Top border for separation */
+      }
+    </style>
+  </head>
+
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'patient_home' %}">HMS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'patient_home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Logout</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'patient_home' %}">
+          <img
+            src="https://i.pinimg.com/736x/63/71/38/63713885b9ecc142f427b92518cf9b15.jpg"
+            alt="Logo"
+            style="height: 40px; margin-right: 10px"
+          />
+          HMS
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'patient_home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Logout</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <div class="container mt-5">
-        <h1 class="mb-4">Book an Appointment</h1>
-        <form method="post" action="{% url 'book_appointment' %}">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="patient_id" class="form-label">Enter Patient ID</label>
-                <input type="number" class="form-control" id="patient_id" name="patient_id" required>
-            </div>
-            <div class="mb-3">
-                <label for="date" class="form-label">Appointment Date</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-            <div class="mb-3">
-                <label for="time" class="form-label">Appointment Time</label>
-                <input type="time" class="form-control" id="time" name="time" required>
-            </div>
-            <div class="mb-3">
-                <label for="reason" class="form-label">Reason for Appointment</label>
-                <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Book Appointment</button>
-        </form>
+      <h1 class="mb-4">Book an Appointment</h1>
+      <form method="post" action="{% url 'book_appointment' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="patient_id" class="form-label">Enter Patient ID</label>
+          <input
+            type="number"
+            class="form-control"
+            id="patient_id"
+            name="patient_id"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="date" class="form-label">Appointment Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date"
+            name="date"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="time" class="form-label">Appointment Time</label>
+          <input
+            type="time"
+            class="form-control"
+            id="time"
+            name="time"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="reason" class="form-label">Reason for Appointment</label>
+          <textarea
+            class="form-control"
+            id="reason"
+            name="reason"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Book Appointment</button>
+      </form>
     </div>
 
+    <footer>
+      <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
